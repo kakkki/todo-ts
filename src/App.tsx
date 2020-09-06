@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
-import { TaskInput, TaskList } from './components'
-import { Task } from './Types'
-import './App.css'
+import React, { useState } from 'react';
+import { 
+  TaskInput,
+  TaskList,
+  ColorBrowser,
+  ColorPickerList,
+} from './components';
+import { Color } from './model/color';
+import { Task } from './Types';
+import './App.css';
 
 const initialState: Task[] = [
   {
@@ -16,12 +22,19 @@ const initialState: Task[] = [
 ]
 
 const App: React.FC = () => {
-  const [tasks, setTasks] = useState(initialState)
+  const [tasks, setTasks] = useState(initialState);
+  const [color, setColor] = useState<Color>({
+    red: 20,
+    green: 40,
+    blue: 180
+  });
 
   return (
     <div>
-        <TaskInput setTasks={setTasks} tasks={tasks} />
-        <TaskList setTasks={setTasks} tasks={tasks} />
+      <ColorBrowser color={color}/>
+      <ColorPickerList color={color} onColorUpdated={setColor}/>
+      <TaskInput setTasks={setTasks} tasks={tasks} />
+      <TaskList setTasks={setTasks} tasks={tasks} />
     </div>
   )
 }
