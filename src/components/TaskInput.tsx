@@ -9,7 +9,7 @@ type Props = {
 type FormData = {
     title: string
 }
-const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
+export const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
     const [ count, setCount ] = useState<number>(tasks.length + 1)
     const { register, handleSubmit, errors, reset } = useForm<FormData>()
  
@@ -46,5 +46,5 @@ const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
         </div>
     )
 }
- 
-export default TaskInput
+
+// export default TaskInput

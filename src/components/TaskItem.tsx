@@ -7,7 +7,7 @@ type Props = {
     handleDelete: (task: Task) => void
 }
  
-const TaskItem: React.FC<Props> = ({ task, handleDone, handleDelete }) => {
+export const TaskItem: React.FC<Props> = ({ task, handleDone, handleDelete }) => {
     return (
         <li className={task.done ? 'done' : ''}>
             <label>
@@ -25,6 +25,4 @@ const TaskItem: React.FC<Props> = ({ task, handleDone, handleDelete }) => {
             >削除</button>
         </li>
     )
-}
- 
-export default TaskItem
+} 

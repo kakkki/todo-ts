@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import TaskList from './components/TaskList'
-import TaskInput from './components/TaskInput'
+import { TaskInput, TaskList } from './components'
 import { Task } from './Types'
 import './App.css'
 

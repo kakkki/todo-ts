@@ -1,13 +1,12 @@
 import React from 'react'
-import TaskItem from './TaskItem'
+import { TaskItem } from './'
 import { Task } from '../Types'
  
 type Props = {
     tasks: Task[]
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>
-}
- 
-const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
+} 
+export const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
  
     const handleDone = (task: Task) => {
         setTasks(prev => prev.map(t =>
@@ -41,5 +40,3 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
         </div>
     )
 }
- 
-export default TaskList
