@@ -1,45 +1,46 @@
 import React, { useState } from 'react'
 import { Task } from '../Types'
- 
+import { useForm } from 'react-hook-form'
+
 type Props = {
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>
     tasks: Task[]
 }
- 
+type FormData = {
+    title: string
+}
 const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
-    const [ inputTitle, setInputTitle ] = useState<string>('')
     const [ count, setCount ] = useState<number>(tasks.length + 1)
+    const { register, handleSubmit, errors, reset } = useForm<FormData>()
  
- 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputTitle(e.target.value)
-    }
- 
-    const handleSubmit = () => {
+    const handleOnSubmit = (data: FormData) => {
+        console.log(data.title);
         setCount(count + 1)
-         
         const newTask: Task = {
             id: count,
-            title: inputTitle,
+            title: data.title,
             done: false
         }
-         
         setTasks([newTask, ...tasks])
-        setInputTitle('')
- 
+        reset()
     }
- 
+
     return (
         <div>
             <div className="inputForm">
                 <div className="inner">
-                    <input
-                        type="text"
-                        className="input"
-                        value={inputTitle}
-                        onChange={handleInputChange}
-                    />
-                    <button onClick={handleSubmit} className="btn is-primary">追加</button>
+                    <form onSubmit={handleSubmit(handleOnSubmit)}>
+                        <input
+                            type="text"
+                            className={errors.title && 'error'}
+                            name="title"
+                            ref={register({
+                                required: 'タイトルは必ず入力してください。'
+                            })}
+                        />
+                        { errors.title && <span className="error-message">{ errors.title.message }</span> }
+                        <button className="btn is-primary">追加</button>
+                    </form>
                 </div>
             </div>
         </div>

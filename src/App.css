@@ -51,11 +51,11 @@ display: block;
   padding: 40px 0;
   border-bottom: 1px solid #d7d2cd;
 }
-.inputForm .inner  {
+.inputForm .form  {
   display: flex;
 }
-.inputForm .input {
-  width: 80%;
+.inner input {
+  width: 70%;
   font-size: 15px;
   outline: none;
   border: solid 3px #d7d2cd;
