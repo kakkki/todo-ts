@@ -1,13 +1,19 @@
 import React from "react";
 import { Color } from "../model/color";
 
+type Rgb =
+    | "red"
+    | "green"
+    | "blue";
+
 interface Props {
   color: Color;
   onColorUpdated: (color: Color) => void;
+  targetColor: Rgb;
 }
 
 export const ColorPicker = (props: Props) => (
-  <div  >
+  <li>
     <input
       type="range"
       min="0"
@@ -21,6 +27,6 @@ export const ColorPicker = (props: Props) => (
         })
       }
     />
-    red : {props.color.red}
-  </div>
+    {props.targetColor} : {props.color[props.targetColor]}
+  </li>
 );

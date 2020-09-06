@@ -3,7 +3,7 @@ import {
   TaskInput,
   TaskList,
   ColorBrowser,
-  ColorPicker,
+  ColorPickerList,
 } from './components';
 import { Color } from './model/color';
 import { Task } from './Types';
@@ -32,7 +32,7 @@ const App: React.FC = () => {
   return (
     <div>
       <ColorBrowser color={color}/>
-      <ColorPicker color={color} onColorUpdated={setColor} />
+      <ColorPickerList color={color} onColorUpdated={setColor}/>
       <TaskInput setTasks={setTasks} tasks={tasks} />
       <TaskList setTasks={setTasks} tasks={tasks} />
     </div>
