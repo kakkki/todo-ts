@@ -9,8 +9,8 @@ interface Props {
 
 export const ColorPickerList = (props: Props) => (
     <ul>
-        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} targetColor={"red"}/>
-        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} targetColor={"green"}/>
-        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} targetColor={"blue"}/>
+        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} colorId={"red"}/>
+        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} colorId={"green"}/>
+        <ColorPicker color={props.color} onColorUpdated={props.onColorUpdated} colorId={"blue"}/>
     </ul>
 )
