@@ -2,17 +2,10 @@ import React from "react";
 import { Color } from "../model/color";
 
 interface Props {
-  color: Color;
-  onColorUpdated: (color: Color) => void;
-  colorId: keyof Color;
+  colorName: keyof Color;
+  value: number;
+  onColorUpdated: (value: number) => void;
 }
-
-const colorUpdate = (props: Props) => (value: number) => {
-  props.onColorUpdated({
-    ...props.color,
-    [props.colorId]: value
-  });
-};
 
 export const ColorPicker = (props: Props) => (
   <li>
@@ -20,9 +13,9 @@ export const ColorPicker = (props: Props) => (
       type="range"
       min="0"
       max="255"
-      value={props.color[props.colorId]}
-      onChange={event => colorUpdate(props)(+event.target.value) }
+      value={props.value}
+      onChange={event => props.onColorUpdated(+event.target.value) }
     />
-    {props.colorId} : {props.color[props.colorId]}
+    {props.colorName} : {props.value}
   </li>
 );
